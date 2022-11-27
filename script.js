@@ -3,7 +3,7 @@ function add(a, b) {
 }
 
 function subtract(a, b) {
-    return a = b;
+    return a - b;
 }
 
 function multiply(a, b) {
@@ -45,16 +45,28 @@ for (let button of numbers) {
 let operators = document.querySelectorAll('.operator');
 for (let button of operators) {
     button.addEventListener('click', () => {
+        //If the user is stringing together operations and there is already a value in num1,
+        //store the current value in num2, find the solution to the first operation, store it in num1 and display it
         if (num1) {
             num2 = +displayValue;
             displayValue = '';
-            num1 = operate (num1, num2, operator);
+            num1 = operate(num1, num2, operator);
             operator = button.id;
-            screen = textContent.num1;
+            screen.textContent = num1;
         } else {
-            num1 = +displayValue;
-            displayValue = '';
-            operator = button.id;
+        num1 = +displayValue;
+        displayValue = '';
+        operator = button.id;
         }
     });
 }
+
+let equalBtn = document.querySelector('#equals');
+equalBtn.addEventListener('click', () => {
+    if(num1) {
+    num2 = +displayValue;
+    let solution = operate(num1, num2, operator);
+    screen.textContent = solution;
+    }
+});
+
