@@ -23,7 +23,7 @@ function operate(num1, num2) {
     }
 }
 
-let screen = document.querySelectorAll('.screen');
+let screen = document.querySelectorAll('.calc-screen');
 let displayValue = screen.textContent;
 let operator;
 let num1;
@@ -39,5 +39,22 @@ for (let button of numbers) {
         displayValue += digit;
         }
         screen.textContent = displayValue;
+    });
+}
+
+let operators = document.querySelectorAll('.operator');
+for (let button of operators) {
+    button.addEventListener('click', () => {
+        if (num1) {
+            num2 = +displayValue;
+            displayValue = '';
+            num1 = operate (num1, num2, operator);
+            operator = button.id;
+            screen = textContent.num1;
+        } else {
+            num1 = +displayValue;
+            displayValue = '';
+            operator = button.id;
+        }
     });
 }

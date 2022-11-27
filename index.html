@@ -10,26 +10,26 @@
 </head>
 <body>
     <div class="calculator-grid">
-        <div class="screen">0</div>
+        <div class="calc-screen">0</div>
         <button data-all-clear>AC</button>
         <button data-delete>Del</button>
         <button data-operation>%</button>
         <button data-operation>/</button>
-        <button data-number>7</button>
-        <button data-number>8</button>
-        <button data-number>9</button>
+        <button class="number">7</button>
+        <button class="number">8</button>
+        <button class="number">9</button>
         <button data-operation>x</button>
-        <button data-number>4</button>
-        <button data-number>5</button>
-        <button data-number>6</button>
-        <button data-operation>-</button>
-        <button data-number>1</button>
-        <button data-number>2</button>
-        <button data-number>3</button>
-        <button data-operation>+</button>
+        <button class="number">4</button>
+        <button class="number">5</button>
+        <button class="number">6</button>
+        <button class="operator" id="subtract">-</button>
+        <button class="number">1</button>
+        <button class="number">2</button>
+        <button class="number">3</button>
+        <button class="operator" id="add">+</button>
         <button>H</button>
-        <button data-number>0</button>
-        <button data-number>.</button>
+        <button class="number">0</button>
+        <button>.</button>
         <button data-equals class="equal" onclick="result()">=</button>
     </div>
 </body>
