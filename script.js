@@ -23,7 +23,21 @@ function operate(num1, num2) {
     }
 }
 
-const num1 = parseFloat(prompt('Insert first number'));
-const num2 = parseFloat(prompt('Insert second number'));
-const operator = prompt('Choose between Add or Subtract');
-operate()
+let screen = document.querySelectorAll('.screen');
+let displayValue = screen.textContent;
+let operator;
+let num1;
+let num2;
+
+let numbers = document.querySelectorAll('.number');
+for (let button of numbers) {
+    button.addEventListener('click', () => {
+        let digit = button.textContent;
+        if (displayValue == '0') {
+            displayValue = digit;
+        } else {
+        displayValue += digit;
+        }
+        screen.textContent = displayValue;
+    });
+}
