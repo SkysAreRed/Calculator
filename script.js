@@ -7,7 +7,8 @@ function calculator() {
     let screen = document.querySelector('.calc-screen') // ^ the display screen which records user input numbers from the current equation (also currentText)
     
     let currentAlgor = ''; // the current equation being stored and used (currentOperand)
-    let mafs = null; // this var stores current user selected math option e.g plus minus 
+    // let firstInput = ''; // this is the first input by the user, currentAlgor moves data to here AFTER an operator has 
+    let quikmafs = null; // this var stores current user selected math option e.g plus minus 
 
     function handleButtons() { // function called HandleButtons
         numberBtn.forEach(btn => { // loops through all buttons called in queryselec .number
@@ -23,19 +24,35 @@ function calculator() {
         operatorBtn.forEach(btn => { // loops through all buttons in operatorBtn query selector .operator
             btn.addEventListener('click', () => { // listen to button clicks
                 if (currentAlgor === '') return; // if current equation is empty, dont decide on an operand
-                mafs = btn.textContent // copies this var into text content to display plus/minus/divide/mulitply icon
+                console.log(btn)
+                quikmafs = btn.textContent.toString() // copies this var into text content to display plus/minus/divide/mulitply icon
                 operate() // 
                 updateDisplay() // runs update display function each time eventListen is triggered
+            })
+        })
+
+        clearBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentAlgor = '';
+                quikmafs = '';
+                
+                updateDisplay()
+
             })
         })
     }
 
     function updateDisplay() { // run this to update display
-        screen.textContent = currentAlgor // current equation is copied to screen
+        screen.textContent = currentAlgor + ' ' + quikmafs; // current equation is copied to screen
     }
 
-    function operate() {
-        if (currentAlgor === ' ') return;
+    function operate() { // this assigns the current user input value an operation e.g plus minus etc
+        if (currentAlgor === ' ') {
+            return;  // checks to see if user has input any values
+        } else {
+            calculateResults()
+        }
+        //currentAlgor = `${}`
     }
 
     function calculateResults() {
