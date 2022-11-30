@@ -69,4 +69,3 @@ equalBtn.addEventListener('click', () => {
     screen.textContent = solution;
     }
 });
-
