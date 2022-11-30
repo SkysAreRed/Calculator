@@ -1,27 +1,66 @@
-function add(a, b) {
-    return a + b;
-}
+function calculator() {
+    let numberBtn = document.querySelectorAll('.number'); // selecting all numbers on calc, assigning name numberBtn
+    let operatorBtn = document.querySelectorAll('.operator') // selecting all operators, assigning name operatorBtn
+    let clearBtn = document.querySelector('.clear') // just the single button selected
+    let deleteBtn = document.querySelector('.delete') // ^
+    let equalBtn = document.querySelector('.equal') // ^
+    let screen = document.querySelector('.calc-screen') // ^ the display screen which records user input numbers from the current equation (also currentText)
+    
+    let currentAlgor = ''; // the current equation being stored and used (currentOperand)
+    let algor = null;
 
-function subtract(a, b) {
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function divide(a, b) {
-    return a / b;
-}
-
-function operate(num1, num2) {
-    switch(operator) {
-        case 'add':
-            return add(num1, num2);
-        case 'subtract':
-            return subtract(num1, num2);
+    function handleButtons() { // function called HandleButtons
+        numberBtn.forEach(btn => { // 
+            btn.addEventListener('click', () => {
+                console.log(btn);
+                if (btn.textContent === '.' && currentAlgor.includes('.')) return // if there is a . already, dont add again
+                currentAlgor += btn.textContent.toString() // takes equation, adds with btn text content, converts to string
+                updateDisplay() // runs update display function
+            })
+        })
     }
+
+    function updateDisplay() { // run this to update display
+        screen.textContent = currentAlgor
+    }
+
+    handleButtons()
 }
+
+calculator()
+
+
+
+
+
+
+
+
+
+// function add(a, b) {
+//     return a + b;
+// }
+
+// function subtract(a, b) {
+//     return a - b;
+// }
+
+// function multiply(a, b) {
+//     return a * b;
+// }
+
+// function divide(a, b) {
+//     return a / b;
+// }
+
+// function operate(num1, num2) {
+//     switch(operator) {
+//         case 'add':
+//             return add(num1, num2);
+//         case 'subtract':
+//             return subtract(num1, num2);
+//     }
+// }
 
 
 
