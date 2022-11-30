@@ -7,27 +7,45 @@ function calculator() {
     let screen = document.querySelector('.calc-screen') // ^ the display screen which records user input numbers from the current equation (also currentText)
     
     let currentAlgor = ''; // the current equation being stored and used (currentOperand)
-    let algor = null;
+    let mafs = null; // this var stores current user selected math option e.g plus minus 
 
     function handleButtons() { // function called HandleButtons
-        numberBtn.forEach(btn => { // 
-            btn.addEventListener('click', () => {
+        numberBtn.forEach(btn => { // loops through all buttons called in queryselec .number
+            btn.addEventListener('click', () => { // event to listen for button click
                 console.log(btn);
-                if (btn.textContent === '.' && currentAlgor.includes('.')) return // if there is a . already, dont add again
-                currentAlgor += btn.textContent.toString() // takes equation, adds with btn text content, converts to string
-                updateDisplay() // runs update display function
+                currentAlgor === 0 ? currentAlgor = " " : ''; // if the current equation is equal to zero, leave string blank, dont do anything in this loop
+                if (btn.textContent === '.' && currentAlgor.includes('.')) return; // if there is a . already, dont add again
+                currentAlgor += btn.textContent.toString() // takes equation, adds ontop of btn data, with btn text content it converts to string
+                updateDisplay() // runs update display function each time eventListen is triggered
+            })
+        })
+
+        operatorBtn.forEach(btn => { // loops through all buttons in operatorBtn query selector .operator
+            btn.addEventListener('click', () => { // listen to button clicks
+                if (currentAlgor === '') return; // if current equation is empty, dont decide on an operand
+                mafs = btn.textContent // copies this var into text content to display plus/minus/divide/mulitply icon
+                operate() // 
+                updateDisplay() // runs update display function each time eventListen is triggered
             })
         })
     }
 
     function updateDisplay() { // run this to update display
-        screen.textContent = currentAlgor
+        screen.textContent = currentAlgor // current equation is copied to screen
     }
 
-    handleButtons()
+    function operate() {
+        if (currentAlgor === ' ') return;
+    }
+
+    function calculateResults() {
+
+    }
+
+    handleButtons() // running script when calculator() is run
 }
 
-calculator()
+calculator() // running on page load
 
 
 
