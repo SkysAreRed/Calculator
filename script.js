@@ -40,6 +40,25 @@ function calculator() {
             quikmafs = null;
             updateDisplay()
         })
+
+        deleteBtn.addEventListener('click', () => { // delete each integer per each input
+            let temp
+            if (currentAlgor === 'l0l!') { // if current algor is the same as error message, make current = 0, make temp copy algor
+                currentAlgor = 0;
+                temp = currentAlgor;
+            } else {
+                temp = currentAlgor.toString().slice(0, -1); // otherwise temp copies current algor, makes string, slices
+            }
+
+            if (temp === '' || temp === 0) { // if temp is empty or zero, make zero, current algor copies temp = 0, update display to show results
+                temp = 0;
+                currentAlgor = temp;
+                updateDisplay()
+            } else { // else, parsefloat copies current algor and changes it to the floating point number, then update display
+                currentAlgor = parseFloat(temp) 
+                updateDisplay()
+            }
+        })
     }
 
     function updateDisplay() { // run this to update display
