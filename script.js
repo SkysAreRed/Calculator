@@ -42,7 +42,7 @@ function calculator() {
         })
 
         deleteBtn.addEventListener('click', () => { // delete each integer per each input
-            let temp
+            let temp; // create a temporary variable holder
             if (currentAlgor === 'l0l') { // if current algor is the same as error message, make current = 0, make temp copy algor
                 currentAlgor = 0;
                 temp = currentAlgor;
