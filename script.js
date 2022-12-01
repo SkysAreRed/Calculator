@@ -43,11 +43,11 @@ function calculator() {
 
         deleteBtn.addEventListener('click', () => { // delete each integer per each input
             let temp
-            if (currentAlgor === 'l0l!') { // if current algor is the same as error message, make current = 0, make temp copy algor
+            if (currentAlgor === 'l0l') { // if current algor is the same as error message, make current = 0, make temp copy algor
                 currentAlgor = 0;
                 temp = currentAlgor;
             } else {
-                temp = currentAlgor.toString().slice(0, -1); // otherwise temp copies current algor, makes string, slices
+                temp = currentAlgor.toString().slice(0, -1); // otherwise temp copies current algor, makes string, slices single digit
             }
 
             if (temp === '' || temp === 0) { // if temp is empty or zero, make zero, current algor copies temp = 0, update display to show results
@@ -59,6 +59,11 @@ function calculator() {
                 updateDisplay()
             }
         })
+
+        equalBtn.addEventListener('click', () => {
+            updateDisplay()
+            calculateResults()
+        })
     }
 
     function updateDisplay() { // run this to update display
@@ -69,9 +74,9 @@ function calculator() {
         }
     }
 
-    function operate() { // this assigns the current user input value an operation e.g plus minus etc
-        if (currentAlgor === ' ') return;
-        if (firstInput !== ' ') {
+    function operate() { // this assigns the current user input value a quikmafs e.g plus minus etc
+        if (currentAlgor === ' ') return; // cancel anyone who tries to add an operator without any numbers 
+        if (firstInput !== ' ') { // dont cancel anyone, then calc results
             calculateResults()
         }
 
@@ -79,8 +84,23 @@ function calculator() {
         currentAlgor = ' '; // clear current algo 
     }
 
-    function calculateResults() {
-        console.log('results console log')
+    function calculateResults() { // turn on the boss music baby 
+        let curr = parseFloat(currentAlgor); // curr is gonna be where i store the currently worked user input
+        let firs = parseFloat(firstInput); // firs is the first input by user, copied over from curr AFTER an operator has been chosen
+        let results; // create results variable
+
+        if (isNaN(curr) || isNaN(firs)) return; // make sure to put a number in
+
+        quikmafs === '+' ? results = firs + curr // if quikmafs is equal to add, i want the result to be equal to let firs PLUS let curr
+        : quikmafs === '-' ? results = firs - curr // else if the quikmafs is equal to minus, now i want the result to be equal to let firs MINUS let curr
+        : quikmafs === 'x' ? results = firs * curr // else if the quikmafs is equal to multiply, now i want the results to be equal to the let firs MULITIPLIED by let curr
+        : quikmafs === '/' ? results = firs / curr // else if the quikmafs is equal to divide, now i want the results to be equal to let firs DIVIDED by let curr
+        : quikmafs === '/' && curr === 0 ? results = 'l0l' // else if quikmafs is equal to divide, AND, let curr is equal to zero, i want the results to be equal to l0l
+        : ''; // else empty string
+
+        currentAlgor = results; // copy results into current algor, so that it can be seen on display
+        quikmafs = null; // reset which equation to use
+        firstInput = ''; // clear text in firstInput
     }
 
     handleButtons() // running script when calculator() is run
