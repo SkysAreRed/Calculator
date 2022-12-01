@@ -114,7 +114,7 @@ calculator() // running on page load
 
 
 
-
+// this is my first attempt at creating different functions to calculateResults()
 
 // function add(a, b) {
 //     return a + b;
@@ -159,7 +159,8 @@ calculator() // running on page load
 
 
 
-// starting fresh
+// example code taken from online tutorial, not mine, just learning
+
 // let screen = document.querySelectorAll('.calc-screen');
 // let displayValue = screen.textContent;
 // let operator;
