@@ -61,6 +61,7 @@ function calculator() {
         })
 
         equalBtn.addEventListener('click', () => {
+            calculateResults() // added two of the same so that screen updates for first completed version of calc, will remove later
             updateDisplay()
             calculateResults()
         })
@@ -111,9 +112,6 @@ calculator() // running on page load
 
 
 
-
-
-
 // this is my first attempt at creating different functions to calculateResults()
 
 // function add(a, b) {
@@ -140,21 +138,6 @@ calculator() // running on page load
 //             return subtract(num1, num2);
 //     }
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
